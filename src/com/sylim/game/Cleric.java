@@ -10,6 +10,28 @@ public class Cleric {
     static final int MAX_HP = 50;
     static final int MAX_MP = 10;
 
+    // A
+    Cleric(String name, int hp, int mp) {
+        this.name = name;
+        this.hp = hp;
+        this.mp = mp;
+    }
+
+    // B
+    Cleric(String name, int hp) {
+        this(name, hp, MAX_MP);
+    }
+
+    // C
+    Cleric(String name) {
+        this(name, MAX_HP, MAX_MP);
+    }
+    
+    // D
+//    Cleric() {
+//        
+//    }
+
     void selfAid() {
         mp -= 5;
         hp = MAX_HP;
