@@ -7,8 +7,8 @@ public class Cleric {
     int hp = 50;
     int mp = 10;
     int time;
-    final int MAX_HP = 50;
-    final int MAX_MP = 10;
+    static final int MAX_HP = 50;
+    static final int MAX_MP = 10;
 
     void selfAid() {
         mp -= 5;
