@@ -17,4 +17,13 @@ public class Hero {
         hp = 100;
         System.out.println(name + "는 잠을 자고 회복했다!");
     }
+    
+    public int getHP() {
+        return hp;
+    }
+    
+    public void setHP(int hp) {
+        this.hp = hp;
+    }
+    
 }

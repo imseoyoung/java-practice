@@ -9,6 +9,9 @@ public class Wand {
     }
     
     public void setName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("에러메시지");
+        }
         this.name = name;
     }
     
@@ -17,6 +20,9 @@ public class Wand {
     }
     
     public void setPower(double power) {
+        if (power < 0.5 || power > 100.0) {
+            throw new IllegalArgumentException("에러메시지");
+        }
         this.power = power;
     }
 }
