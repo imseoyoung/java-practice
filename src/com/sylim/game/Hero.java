@@ -6,17 +6,27 @@ public class Hero {
     // member variable
     // property
     // default값이 모두 들어가 있음 (ex String - null, int - 0)
-    String name;
-    int hp;
+    private String name;
+    private int hp;
     
-    void attack() {}
-    void run() {}
-    void sit(int sec) {}
-    void slip() {}
-    void sleep() {
-        hp = 100;
-        System.out.println(name + "는 잠을 자고 회복했다!");
+    public void attack(Kinoko enemy) {
+        System.out.println(this.name + "의 공격!");
+        this.hp -= 5;
+        System.out.println("5포인트의 데미지를 주었다!");
     }
+    
+    public void run() {
+       System.out.println(this.name + "는 도망쳤다!");
+    }
+    
+//    void sit(int sec) {}
+//    
+//    void slip() {}
+//    
+//    void sleep() {
+//        hp = 100;
+//        System.out.println(name + "는 잠을 자고 회복했다!");
+//    }
     
     public int getHP() {
         return hp;
@@ -24,6 +34,14 @@ public class Hero {
     
     public void setHP(int hp) {
         this.hp = hp;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
     
 }
