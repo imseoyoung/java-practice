@@ -7,7 +7,7 @@ public class Hero {
     // property
     // default값이 모두 들어가 있음 (ex String - null, int - 0)
     private String name;
-    private int hp;
+    private double hp;
     
     public void attack(Kinoko enemy) {
         System.out.println(this.name + "의 공격!");
@@ -28,11 +28,11 @@ public class Hero {
 //        System.out.println(name + "는 잠을 자고 회복했다!");
 //    }
     
-    public int getHP() {
+    public double getHP() {
         return hp;
     }
     
-    public void setHP(int hp) {
+    public void setHP(double hp) {
         this.hp = hp;
     }
     
