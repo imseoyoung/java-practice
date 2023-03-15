@@ -21,8 +21,9 @@ public class PoisonKinoko extends Kinoko {
 
         if (this.poison > 0) {
             System.out.println("추가로, 독 포자를 살포했다!");
-            hero.setHP(hero.getHP() - hero.getHP() * 0.2);
-            System.out.println(hero.getHP() + "포인트의 데미지");
+            double damage = hero.getHP() * 0.2;
+            hero.setHP(hero.getHP() - damage);
+            System.out.println(damage + "포인트의 데미지");
             this.poison -= 1;
         }
     }
