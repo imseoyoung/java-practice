@@ -11,6 +11,6 @@ public class Main {
         
         PoisonKinoko poisonkinoko = new PoisonKinoko('A');
         poisonkinoko.attack(hero);
-
+        System.out.println(poisonkinoko.getPoison());
     }
 }
