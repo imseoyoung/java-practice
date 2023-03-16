@@ -1,36 +1,28 @@
 package com.sylim.practice.examUp3;
 
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-
-        List<String> strs = new ArrayList<>();
-        strs.add("이동학");
-        strs.add("박경덕");
-        strs.add("강태근");
-        strs.add("최유림");
-
-        Collections.sort(strs);
-
-        List<Integer> nums = new ArrayList<>();
-        nums.add(5);
-        nums.add(1);
-        nums.add(8);
-        nums.add(2);
-
-        Collections.sort(nums);
-        System.out.println(nums);
-
-        List<Student> students = new ArrayList<>();
-        students.add(new Student(0, "이동학"));
-        students.add(new Student(1, "박경덕"));
-        students.add(new Student(2, "강태근"));
-        students.add(new Student(3, "최유림"));
-
-        Collections.sort(students);
-        System.out.println(students);
+    public static void main(String[] args) throws ParseException {
+        List<Book> books = new ArrayList<>();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/mm/dd");
+        
+        books.add(new Book("오준석의 생존코딩", format.parse("2021/05/28"), "플러터"));
+        books.add(new Book("이펙티브 자바", format.parse("2018/11/01"), "자바"));
+        books.add(new Book("오준석의 안드로이드 생존코딩", format.parse("2021/12/17"), "코틀린"));
+        
+        Collections.sort(books);
+        System.out.println(books);
+        
+        Book book = new Book("서영", new Date(1999, 01, 28), "생일");
+        Book bookCopy = book.clone();
+       
+        System.out.println(book);
+        System.out.println(bookCopy);
     }
 }
