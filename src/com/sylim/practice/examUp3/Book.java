@@ -3,7 +3,7 @@ package com.sylim.practice.examUp3;
 import java.util.Date;
 import java.util.Objects;
 
-public class Book implements Comparable<Book>, Cloneable {
+public class Book implements Comparable<Book> {
     private String title;
     private Date publishDate;
     private String comment;   
@@ -57,8 +57,10 @@ public class Book implements Comparable<Book>, Cloneable {
     public int compareTo(Book book) {
         return this.publishDate.compareTo(book.publishDate);
     }
-    @Override
-    public Book clone() {
+    
+    // 현재 cloneable이 권장되지 않는 사용 방법으로, 굳이 clone이라는 method를 사용할 필요는 없다.
+    // 따라서, copy라는 복사하는 method를 따로 만들어 사용했다.
+    public Book copy() {
         Book result = new Book(title, publishDate, comment);
         result.title = this.title;
         result.publishDate = (Date) this.publishDate.clone();

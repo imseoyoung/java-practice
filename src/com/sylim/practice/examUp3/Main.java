@@ -20,7 +20,7 @@ public class Main {
         System.out.println(books);
         
         Book book = new Book("서영", format.parse("1999/01/28"), "생일");
-        Book bookCopy = book.clone();
+        Book bookCopy = book.copy();
        
         System.out.println(book);
         System.out.println(bookCopy);
