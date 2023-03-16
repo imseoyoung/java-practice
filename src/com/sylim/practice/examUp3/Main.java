@@ -19,7 +19,7 @@ public class Main {
         Collections.sort(books);
         System.out.println(books);
         
-        Book book = new Book("서영", new Date(1999, 01, 28), "생일");
+        Book book = new Book("서영", format.parse("1999/01/28"), "생일");
         Book bookCopy = book.clone();
        
         System.out.println(book);
