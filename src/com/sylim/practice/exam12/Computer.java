@@ -1,4 +1,4 @@
-package com.sylim.practice;
+package com.sylim.practice.exam12;
 
 public class Computer extends TangibleAsset {
     private String makerName;

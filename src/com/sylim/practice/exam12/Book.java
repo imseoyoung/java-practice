@@ -1,4 +1,4 @@
-package com.sylim.practice;
+package com.sylim.practice.exam12;
 
 public class Book extends TangibleAsset {
     private String isbn;

@@ -1,4 +1,4 @@
-package com.sylim.practice;
+package com.sylim.practice.exam12;
 
 public abstract class Asset {
     private String name;
