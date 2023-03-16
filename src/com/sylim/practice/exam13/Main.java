@@ -1,14 +1,17 @@
 package com.sylim.practice.exam13;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        X obj = new A();
-        obj.a();
-//        obj.b();
-//        obj.c();
-        Y y1 = new A();
-        Y y2 = new B();        
-        y1.a();
-        y2.a();
-    }
+//        X x = new A();
+//        Y y = new B();       
+        ArrayList<Y> list = new ArrayList<Y>();
+        list.add(new A());
+        list.add(new B());
+        
+        for (Y obj : list) {
+            obj.b();
+        }      
+    } 
 }
