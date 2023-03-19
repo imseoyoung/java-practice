@@ -6,5 +6,4 @@ public interface Thing {
     
     int getY();
     void setY(int y);
-
 }
