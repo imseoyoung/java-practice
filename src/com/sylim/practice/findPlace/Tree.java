@@ -31,13 +31,4 @@ public class Tree implements Thing {
         this.y = y;
     }
 
-    public void caldistance(WorkPlace wp) {
-            double result = Math.pow(x - wp.getX(), 2) + Math.pow(y - wp.getY(), 2);            
-            if (result >= Math.pow(wp.getR(), 2)) {
-                System.out.println("silent");
-            } else {
-                System.out.println("noisy");
-            }
-        
-    }
 }
