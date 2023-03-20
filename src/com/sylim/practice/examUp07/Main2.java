@@ -4,12 +4,12 @@ import java.io.*;
 
 public class Main2 {
     public static void main(String[] args) throws IOException {
-        Employee employee = new Employee("홍길동", 41);
+        Department department = new Department("총무부", new Employee("홍길동", 41));
         
         // 저장
         FileOutputStream fos = new FileOutputStream("company.dat");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(employee);
+        oos.writeObject(department);
         oos.flush();
         oos.close();
         
