@@ -11,12 +11,12 @@ public class CounterTest {
         counter.setCount(3);
 
         // 1회 실행
-        counter.increment();
+        counter.increase();
         assertEquals(4, counter.getCount());
 
         // 2회 실행
-        counter.increment();
-        counter.increment();
+        counter.increase();
+        counter.increase();
         assertEquals(6, counter.getCount());
     }
 }

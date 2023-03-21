@@ -11,7 +11,7 @@ public class DownCounter {
         this.count = count;
     }
 
-    public void decrement() {
+    public void decrease() {
         count--;
     }
 }
