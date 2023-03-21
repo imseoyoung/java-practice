@@ -7,16 +7,16 @@ public class CounterTest {
 
     @Test
     public void test() {
-        Counter counter = new Counter();
+        UpCounter counter = new UpCounter();
         counter.setCount(3);
 
         // 1회 실행
-        counter.increase();
+        counter.count();
         assertEquals(4, counter.getCount());
 
         // 2회 실행
-        counter.increase();
-        counter.increase();
+        counter.count();
+        counter.count();
         assertEquals(6, counter.getCount());
     }
 }
