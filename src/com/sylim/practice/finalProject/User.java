@@ -16,6 +16,8 @@ public class User implements Manage {
     private String phone;
     private String birthday;
     private String joindate;
+    
+    private String[] deletedUser = null;
 
     CsvToList csvToList = new CsvToList();
     List<String[]> users = csvToList.readCSV("users.csv");
@@ -114,6 +116,7 @@ public class User implements Manage {
                     delete();
                     break;
                 case ("5"):
+                    deleteBack();
                     break;
                 default:
                     System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
@@ -272,7 +275,6 @@ public class User implements Manage {
         userMain();
     }
 
-
     @Override
     public void delete() {
         while (true) {
@@ -281,12 +283,14 @@ public class User implements Manage {
             int cnt = 0;
             for (int i = 0; i < users.size(); i++) {
                 if (temp.equals(users.get(i)[0])) {
+                    deletedUser = users.get(i);
                     users.remove(i);
                     cnt++;
                     System.out.println("회원 삭제 완료");
                     csvWriter.writeCsvFile("users.csv");
                     break;
                 }
+                break;
             }
             if (cnt == 0) {
                 System.out.println("해당 회원이 존재하지 않습니다. 회원 번호를 다시 입력하세요.");
@@ -295,11 +299,32 @@ public class User implements Manage {
             }
         }
     }
-
+    
+    
     @Override
     public void deleteBack() {
+        while (true) {
+            System.out.println("1.복구하기    2.나가기");
+            String select = sc.nextLine();
 
+            switch (select) {
+                case ("1"):
+                    if (deletedUser != null) {
+                        users.add(deletedUser);
+                        deletedUser = null;
+                        System.out.println("복구가 완료되었습니다.");
+                        csvWriter.writeCsvFile("books.csv");
+                        break;
+                    } else {
+                        System.out.println("복구할 책이 없습니다.");
+                    }
+                    break;
+                case ("2"):
+                    return;
+                default:
+                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                    break;
+            }
+        }
     }
-
-
 }

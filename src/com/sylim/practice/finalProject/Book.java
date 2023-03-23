@@ -1,5 +1,6 @@
 package com.sylim.practice.finalProject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -13,6 +14,8 @@ public class Book implements Manage {
     private String writer;
     private String publisher;
     private boolean available;
+
+    private String[] deletedBook = null;
 
     CsvToList csvToList = new CsvToList();
     List<String[]> books = csvToList.readCSV("books.csv");
@@ -256,6 +259,7 @@ public class Book implements Manage {
             int cnt = 0;
             for (int i = 0; i < books.size(); i++) {
                 if (temp.equals(books.get(i)[0])) {
+                    deletedBook = books.get(i); // 삭제 대상 책의 정보를 저장
                     books.remove(i);
                     cnt++;
                     System.out.println("도서 삭제 완료");
@@ -272,7 +276,31 @@ public class Book implements Manage {
     }
 
     @Override
-    public void deleteBack() {}
+    public void deleteBack() {
+        while (true) {
+            System.out.println("1.복구하기    2.나가기");
+            String select = sc.nextLine();
+
+            switch (select) {
+                case ("1"):
+                    if (deletedBook != null) {
+                        books.add(deletedBook);
+                        deletedBook = null;
+                        System.out.println("복구가 완료되었습니다.");
+                        csvWriter.writeCsvFile("books.csv");
+                        break;
+                    } else {
+                        System.out.println("복구할 책이 없습니다.");
+                    }
+                    break;
+                case ("2"):
+                    return;
+                default:
+                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                    break;
+            }
+        }
+    }
 }
 
 
