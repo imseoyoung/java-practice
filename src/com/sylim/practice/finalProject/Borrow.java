@@ -91,7 +91,7 @@ public class Borrow {
                     viewAvailable();
                     break;
                 default:
-                    System.out.println("잘못입력했지렁이 다시입력해지렁이");
+                    System.out.println("잘못입력했습니다. 다시 입력해주세요.");
                     break;
             }
         }
@@ -261,10 +261,10 @@ public class Borrow {
                 System.out.println();
             }
             System.out.println("뒤로 가기(B) 종료 하기(X)");
-            String select = sc.nextLine();
-            if (select.equalsIgnoreCase("b")) {
+            String userinput = sc.nextLine();
+            if (userinput.equalsIgnoreCase("b")) {
                 break;
-            } else if (select.equalsIgnoreCase("X")) {
+            } else if (userinput.equalsIgnoreCase("X")) {
                 System.out.println("프로그램을 종료합니다.");
                 System.exit(0);
             } else {
