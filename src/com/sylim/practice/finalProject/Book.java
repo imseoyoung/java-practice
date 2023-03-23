@@ -87,13 +87,13 @@ public class Book implements Manage {
     }
 
     public void bookMain() {
-        String userInput = "";
+        String userinput = "";
 
-        while (!userInput.equals("0")) {
+        while (!userinput.equals("0")) {
             System.out.println("0.뒤로    1.책 조회    2.책 등록    3.책 수정    4.책 삭제    5.삭제취소");
-            userInput = sc.nextLine();
+            userinput = sc.nextLine();
 
-            switch (userInput) {
+            switch (userinput) {
                 case ("0"):
                     return;
                 case ("1"):
@@ -112,7 +112,7 @@ public class Book implements Manage {
                     deleteBack();
                     break;
                 default:
-                    System.out.println("잘못입력했지렁이 다시입력해지렁이");
+                    System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
                     break;
             }
         }
@@ -151,16 +151,16 @@ public class Book implements Manage {
             while (true) {
                 int cnt = 0;
                 System.out.println("책 번호 입력");
-                String temp = sc.nextLine();
+                String id = sc.nextLine();
                 for (String[] value : books) {
-                    if (temp.equals(value[0])) {
+                    if (id.equals(value[0])) {
                         cnt++;
                         System.out.println("책 번호 중복입니다. 다시 입력하세요.");
                         break;
                     }
                 }
                 if (cnt == 0) {
-                    book.setId(temp);
+                    book.setId(id);
                     break;
                 }
             }
@@ -207,12 +207,12 @@ public class Book implements Manage {
         while (true) {
             System.out.println("수정 할 책의 번호를 입력해주세요");
             int cnt = 0;
-            String temp = sc.nextLine();
+            String id = sc.nextLine();
             for (int i = 0; i < books.size(); i++) {
-                if (temp.equals(books.get(i)[0])) {
+                if (id.equals(books.get(i)[0])) {
                     System.out.println("1.제목 수정    2.저자 수정    3.출판사 수정");
-                    String choice = sc.nextLine();
-                    switch (choice) {
+                    String userinput = sc.nextLine();
+                    switch (userinput) {
                         case "1":
                             System.out.println("새로운 제목을 입력하세요: ");
                             books.get(i)[1] = sc.nextLine();
@@ -255,10 +255,10 @@ public class Book implements Manage {
     public void delete() {
         while (true) {
             System.out.println("삭제 할 책의 번호를 입력해주세요");
-            String temp = sc.nextLine();
+            String id = sc.nextLine();
             int cnt = 0;
             for (int i = 0; i < books.size(); i++) {
-                if (temp.equals(books.get(i)[0])) {
+                if (id.equals(books.get(i)[0])) {
                     deletedBook = books.get(i); // 삭제 대상 책의 정보를 저장
                     books.remove(i);
                     cnt++;
@@ -273,15 +273,16 @@ public class Book implements Manage {
                 break;
             }
         }
+        bookMain();
     }
 
     @Override
     public void deleteBack() {
         while (true) {
-            System.out.println("1.복구하기    2.나가기");
-            String select = sc.nextLine();
+            System.out.println("1.복구하기    2.종료하기");
+            String userinput = sc.nextLine();
 
-            switch (select) {
+            switch (userinput) {
                 case ("1"):
                     if (deletedBook != null) {
                         books.add(deletedBook);
@@ -294,7 +295,8 @@ public class Book implements Manage {
                     }
                     break;
                 case ("2"):
-                    return;
+                    System.out.println("프로그램을 종료합니다.");
+                    System.exit(0);
                 default:
                     System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                     break;

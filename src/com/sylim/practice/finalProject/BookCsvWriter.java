@@ -63,12 +63,14 @@ public class BookCsvWriter implements CsvWriter {
             }
 
         } catch (Exception e) {
+            System.out.println("실패" + e.getMessage());
         } finally {
             try {
                 bw.flush();
                 bw.close();
                 osw.close();
             } catch (IOException e) {
+                System.out.println("실패" + e.getMessage());
             }
         }
     }

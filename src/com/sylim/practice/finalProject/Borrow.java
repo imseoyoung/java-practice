@@ -69,13 +69,13 @@ public class Borrow {
     }
 
     public void borrowMain() throws ParseException {
-        String userInput = "";
+        String userinput = "";
 
-        while (!userInput.equals("0")) {
+        while (!userinput.equals("0")) {
             System.out.println("0.뒤로    1.대출하기    2.반납하기    3.연장하기    4.대출목록");
-            userInput = sc.nextLine();
+            userinput = sc.nextLine();
 
-            switch (userInput) {
+            switch (userinput) {
                 case ("0"):
                     return;
                 case ("1"):
@@ -158,12 +158,12 @@ public class Borrow {
     public void returnBook() {
         while (true) {
             System.out.println("반납 할 책의 번호를 입력해주세요");
-            String temp = sc.nextLine();
+            String bookid = sc.nextLine();
             int cnt = 0;
             for (int i = 0; i < book.books.size(); i++) {
-                if (temp.equals(book.books.get(i)[0])) {
+                if (bookid.equals(book.books.get(i)[0])) {
                     for (int j = 0; j < history.size(); j++) {
-                        if (temp.equals(history.get(j)[0])) {
+                        if (bookid.equals(history.get(j)[0])) {
                             history.remove(j);
                             cnt++;
                             hcsvWriter.writeCsvFile("history.csv");
@@ -190,9 +190,9 @@ public class Borrow {
             Borrow borrow = new Borrow();
             System.out.println("연장 할 책의 번호를 입력해주세요");
             int cnt = 0;
-            String temp = sc.nextLine();
+            String bookid = sc.nextLine();
             for (int i = 0; i < history.size(); i++) {
-                if (history.get(i)[0].equals(temp) && history.get(i)[2].equals("0")) {
+                if (history.get(i)[0].equals(bookid) && history.get(i)[2].equals("0")) {
                     Date date = sdf.parse(history.get(i)[4]);
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(date);

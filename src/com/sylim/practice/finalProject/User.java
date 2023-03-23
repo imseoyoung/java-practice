@@ -16,7 +16,7 @@ public class User implements Manage {
     private String phone;
     private String birthday;
     private String joindate;
-    
+
     private String[] deletedUser = null;
 
     CsvToList csvToList = new CsvToList();
@@ -98,9 +98,9 @@ public class User implements Manage {
 
     public void userMain() {
         System.out.println("0.뒤로    1.회원 조회    2.회원 등록    3.회원 수정    4.회원 삭제    5.삭제취소");
-        String userInput = sc.nextLine();
+        String userinput = sc.nextLine();
         while (true) {
-            switch (userInput) {
+            switch (userinput) {
                 case ("0"):
                     return;
                 case ("1"):
@@ -158,16 +158,16 @@ public class User implements Manage {
             while (true) {
                 int cnt = 0;
                 System.out.println("회원 번호 입력");
-                String temp = sc.nextLine();
+                String id = sc.nextLine();
                 for (String[] value : users) {
-                    if (temp.equals(value[0])) {
+                    if (id.equals(value[0])) {
                         cnt++;
                         System.out.println("회원 번호 중복입니다. 다시 입력하세요.");
                         break;
                     }
                 }
                 if (cnt == 0) {
-                    user.setId(temp);
+                    user.setId(id);
                     break;
                 }
             }
@@ -219,12 +219,12 @@ public class User implements Manage {
         while (true) {
             System.out.println("수정 할 회원의 번호를 입력해주세요");
             int cnt = 0;
-            String temp = sc.nextLine();
+            String id = sc.nextLine();
             for (int i = 0; i < users.size(); i++) {
-                if (temp.equals(users.get(i)[0])) {
+                if (id.equals(users.get(i)[0])) {
                     System.out.println("1.이름 수정    2.주소 수정    3.전화번호 수정    4.생일 수정    5.가입날짜 수정");
-                    String choice = sc.nextLine();
-                    switch (choice) {
+                    String userinput = sc.nextLine();
+                    switch (userinput) {
                         case "1":
                             System.out.println("새로운 이름을 입력하세요 : ");
                             users.get(i)[1] = sc.nextLine();
@@ -248,7 +248,7 @@ public class User implements Manage {
                             users.get(i)[4] = sc.nextLine();
                             csvWriter.writeCsvFile("users.csv");
                             cnt++;
-                            break;                       
+                            break;
                         case "5":
                             System.out.println("새로운 가입날짜를 입력하세요 : (yyyy/MM/dd) ");
                             users.get(i)[5] = sc.nextLine();
@@ -279,10 +279,10 @@ public class User implements Manage {
     public void delete() {
         while (true) {
             System.out.println("삭제 할 회원의 번호를 입력해주세요");
-            String temp = sc.nextLine();
+            String id = sc.nextLine();
             int cnt = 0;
             for (int i = 0; i < users.size(); i++) {
-                if (temp.equals(users.get(i)[0])) {
+                if (id.equals(users.get(i)[0])) {
                     deletedUser = users.get(i);
                     users.remove(i);
                     cnt++;
@@ -290,37 +290,38 @@ public class User implements Manage {
                     csvWriter.writeCsvFile("users.csv");
                     break;
                 }
-                break;
             }
             if (cnt == 0) {
                 System.out.println("해당 회원이 존재하지 않습니다. 회원 번호를 다시 입력하세요.");
             } else {
+                // 회원 삭제가 완료되면 while 루프를 종료합니다.
                 break;
             }
         }
+        userMain();
     }
-    
-    
+
+
     @Override
     public void deleteBack() {
         while (true) {
-            System.out.println("1.복구하기    2.나가기");
-            String select = sc.nextLine();
+            System.out.println("1.복구하기    2.종료하기");
+            String userinput = sc.nextLine();
 
-            switch (select) {
+            switch (userinput) {
                 case ("1"):
                     if (deletedUser != null) {
                         users.add(deletedUser);
                         deletedUser = null;
                         System.out.println("복구가 완료되었습니다.");
-                        csvWriter.writeCsvFile("books.csv");
-                        break;
+                        csvWriter.writeCsvFile("users.csv");
                     } else {
                         System.out.println("복구할 책이 없습니다.");
                     }
                     break;
                 case ("2"):
-                    return;
+                    System.out.println("프로그램을 종료합니다.");
+                    System.exit(0);
                 default:
                     System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                     break;

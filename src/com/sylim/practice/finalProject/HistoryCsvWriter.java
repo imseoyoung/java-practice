@@ -67,7 +67,7 @@ public class HistoryCsvWriter implements CsvWriter {
                 bw.newLine();
             }
         } catch (Exception e) {
-                System.out.println("실패"+ e.getMessage());
+            System.out.println("실패" + e.getMessage());
         } finally {
             try {
                 bw.flush();
