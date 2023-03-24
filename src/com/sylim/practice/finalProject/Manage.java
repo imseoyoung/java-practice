@@ -1,8 +1,6 @@
 package com.sylim.practice.finalProject;
 
 public interface Manage {
-    
-//    public void back();         // 뒤로
 
     public void view();         // 조회
 
