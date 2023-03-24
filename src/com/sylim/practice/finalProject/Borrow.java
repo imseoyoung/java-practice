@@ -221,10 +221,10 @@ public class Borrow {
             List<String[]> validHistory = new ArrayList<>();            
             for (String[] data : history) {
                 try {
-                    if (data[3].equals("due")) {
+                    if (data[4].equals("due")) {
                         continue; // "due" 문자열이 포함된 데이터는 제외
                     }
-                    sdf.parse(data[3]); // 유효한 날짜 형식인지 검사
+                    sdf.parse(data[4]); // 유효한 날짜 형식인지 검사
                     validHistory.add(data);
                 } catch (ParseException e) {
                     continue; // 유효한 날짜 형식이 아닌 데이터는 제외
@@ -232,8 +232,8 @@ public class Borrow {
             }
             Collections.sort(validHistory, (o1, o2) -> {
                 try {
-                    Date date1 = sdf.parse(o1[3]);
-                    Date date2 = sdf.parse(o2[3]);
+                    Date date1 = sdf.parse(o1[4]);
+                    Date date2 = sdf.parse(o2[4]);
                     return date1.compareTo(date2); // 반납날짜를 기준으로 정렬
                 } catch (ParseException e) {
                     return 0; // 유효한 날짜 형식이 아닌 경우 정렬하지 않음
@@ -243,8 +243,8 @@ public class Borrow {
                 @Override
                 public int compare(String[] o1, String[] o2) {
                     try {
-                        Date d1 = sdf.parse(o1[3]); // o1[3]은 반납날짜를 나타냄
-                        Date d2 = sdf.parse(o2[3]); // o2[3]은 반납날짜를 나타냄
+                        Date d1 = sdf.parse(o1[4]);
+                        Date d2 = sdf.parse(o2[4]);
                         return d1.compareTo(d2);
                     } catch (ParseException e) {
                         e.printStackTrace();
